@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cek43fmmoxe8t"]
+
+[ext_resource type="Texture2D" uid="uid://dv7yflxy8bcn7" path="res://assets/characters/brunette_sprite_base.png" id="1_nel73"]
+[ext_resource type="Script" path="res://script/brunette_npc.gd" id="1_qd5j3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrqgp"]
+atlas = ExtResource("1_nel73")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22x04"]
+atlas = ExtResource("1_nel73")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1ey3"]
+atlas = ExtResource("1_nel73")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dla65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22x04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1ey3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbtm4"]
+radius = 11.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fbpeb"]
+radius = 11.6667
+height = 33.3333
+
+[node name="brunette_npc" type="CharacterBody2D"]
+position = Vector2(0, -9)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_qd5j3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dla65")
+animation = &"idle"
+frame_progress = 0.607569
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9)
+shape = SubResource("CapsuleShape2D_hbtm4")
+
+[node name="dialogue_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_range"]
+position = Vector2(1.66667, 0)
+shape = SubResource("CapsuleShape2D_fbpeb")
