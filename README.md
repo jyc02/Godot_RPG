@@ -1,2 +1,3 @@
 #Godot RPG game
-Jay Chin
+
+Jay Chin & Josh Daugherty
